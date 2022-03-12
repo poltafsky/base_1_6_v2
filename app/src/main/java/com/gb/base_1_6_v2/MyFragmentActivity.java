@@ -13,10 +13,11 @@ public class MyFragmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_fragments);
 
          if(savedInstanceState==null){
-             List_noteFragment list_noteFragment = new List_noteFragment();
+             List_noteFragment list_noteFragment = List_noteFragment.newInstance();
              getSupportFragmentManager().beginTransaction().replace(R.id.list_note,list_noteFragment).commit();
              if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
-                 Content_noteFragment content_noteFragment = new Content_noteFragment();
+                 Note default_note = new Note("Note #1", R.array.notes_description);
+                 Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(default_note);
                  getSupportFragmentManager().beginTransaction().replace(R.id.content_note,content_noteFragment).commit();
              }
          }
