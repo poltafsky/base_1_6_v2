@@ -9,9 +9,9 @@ public class Note implements Parcelable  {
     private String description;
     private int DateOfCreation;
 
-    public Note(String name, int notes_description) {
+    public Note(String name, int Index) {
         this.name = name;
-        Index = R.array.notes_description;
+        this.Index = Index;
     }
 
     public int getIndex() {

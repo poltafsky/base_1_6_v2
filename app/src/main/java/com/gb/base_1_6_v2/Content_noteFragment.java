@@ -36,7 +36,7 @@ public class Content_noteFragment extends Fragment {
         TextView textView= view.findViewById(R.id.nameNotes);
         textView.setText(note.getIndex());
 
-        //String [] note = getResources().getStringArray(R.array.List_notes);
-       // ((TextView) view.findViewById(R.id.nameNotes)).setText(note[note.getIndex()]);
+        String [] notes = getResources().getStringArray(R.array.List_notes);
+       ((TextView) view.findViewById(R.id.nameNotes)).setText(notes[note.getIndex()]);
     }
 }
