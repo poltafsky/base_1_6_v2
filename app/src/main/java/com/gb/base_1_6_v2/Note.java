@@ -6,12 +6,17 @@ import android.os.Parcelable;
 public class Note implements Parcelable  {
     private int Index;
     private String name;
-    private String description;
-    private int DateOfCreation;
 
-    public Note(String name, int Index) {
+    public Note(int i) {
+        Index = i;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        this.Index = Index;
     }
 
     public int getIndex() {
@@ -22,10 +27,12 @@ public class Note implements Parcelable  {
         Index = index;
     }
 
+    public static Creator<Note> getCREATOR() {
+        return CREATOR;
+    }
+
     protected Note(Parcel in) {
-        name = in.readString();
-        description = in.readString();
-        DateOfCreation = in.readInt();
+        Index = in.readInt();
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -40,30 +47,6 @@ public class Note implements Parcelable  {
         }
     };
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getDateOfCreation() {
-        return DateOfCreation;
-    }
-
-    public void setDateOfCreation(int dateOfCreation) {
-        DateOfCreation = dateOfCreation;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -71,8 +54,6 @@ public class Note implements Parcelable  {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(description);
-        parcel.writeInt(DateOfCreation);
+        parcel.writeInt(Index);
     }
 }

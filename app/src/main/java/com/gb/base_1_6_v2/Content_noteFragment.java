@@ -34,9 +34,9 @@ public class Content_noteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         note = getArguments().getParcelable(ARG_NOTE);
         TextView textView= view.findViewById(R.id.nameNotes);
-        textView.setText(note.getIndex());
+        textView.setText(note.getName());
 
-        String [] notes = getResources().getStringArray(R.array.List_notes);
+        String [] notes = getResources().getStringArray(R.array.notes_description);
        ((TextView) view.findViewById(R.id.nameNotes)).setText(notes[note.getIndex()]);
     }
 }

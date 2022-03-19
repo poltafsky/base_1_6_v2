@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Base_1_6_v2">
         <activity
-            android:name=".MyFragmentActivity"
+            android:name=".MyFragmentActivityv2"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

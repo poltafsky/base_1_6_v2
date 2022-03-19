@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyFragmentActivity">
+    tools:context=".MyFragmentActivityv2">
 
     <FrameLayout
         android:id="@+id/list_note"

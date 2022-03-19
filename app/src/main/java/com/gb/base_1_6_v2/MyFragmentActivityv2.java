@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-public class MyFragmentActivity extends AppCompatActivity {
+public class MyFragmentActivityv2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class MyFragmentActivity extends AppCompatActivity {
              List_noteFragment list_noteFragment = List_noteFragment.newInstance();
              getSupportFragmentManager().beginTransaction().replace(R.id.list_note,list_noteFragment).commit();
              if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
-                 Note default_note = new Note("Note #1", R.array.notes_description); // что вместо R.drawable? R.array.notes_description или R.id.nameNotes
+                 Note default_note = new Note(0);
                  Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(default_note);
                  getSupportFragmentManager().beginTransaction().replace(R.id.content_note,content_noteFragment).commit();
              }
