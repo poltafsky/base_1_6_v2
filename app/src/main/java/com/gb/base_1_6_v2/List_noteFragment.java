@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class List_noteFragment extends Fragment {
-
-
+    private Note currentNote;
+    public static final String CURRENT_NOTE = "note_current";
     public static List_noteFragment newInstance() {
         List_noteFragment fragment = new List_noteFragment();
 
@@ -25,38 +25,64 @@ public class List_noteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list_note, container, false);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(CURRENT_NOTE,currentNote);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState!=null) {
+            currentNote = savedInstanceState.getParcelable(CURRENT_NOTE);
+        }else {
+            currentNote = new Note(0);
+        }
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            showLand();
+        }
 
-        String [] notes = getResources().getStringArray(R.array.List_notes);
+            initView(view);
 
-        for (int i = 0; i < notes.length; i++){
+    }
+
+    private void initView(View view) {
+        String[] notes = getResources().getStringArray(R.array.List_notes);
+
+        for (int i = 0; i < notes.length; i++) {
             String noteName = notes[i];
             TextView textView = new TextView(getContext());
             textView.setTextSize(30f);
             textView.setText(noteName);
             ((LinearLayout) view).addView(textView);
-            int finali= i;
+            int finali = i;
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Note note = new Note(finali);
-                    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-                        Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(note);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_note,content_noteFragment).commit();
+                    currentNote = new Note(finali);
+                    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                        showLand ();
                     } else {
-                        Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(note);
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_note,content_noteFragment).addToBackStack("").commit();
+                        showPort();
                     }
+
                 }
             });
 
         }
+    }
+
+    private void showLand () {
+        Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(currentNote);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_note, content_noteFragment).commit();
+    }
+    private void showPort () {
+        Content_noteFragment content_noteFragment = Content_noteFragment.newInstance(currentNote);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.list_note, content_noteFragment).addToBackStack("").commit();
     }
 }
 
