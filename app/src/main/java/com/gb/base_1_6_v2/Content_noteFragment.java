@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,5 +39,12 @@ public class Content_noteFragment extends Fragment {
 
         String [] notes = getResources().getStringArray(R.array.notes_description);
        ((TextView) view.findViewById(R.id.nameNotes)).setText(notes[note.getIndex()]);
+
+        ((Button) view.findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               requireActivity().getSupportFragmentManager().popBackStack();
+           }
+       });
     }
 }

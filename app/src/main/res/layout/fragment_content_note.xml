@@ -3,15 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/nameNotes"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:text="Название заметки"
-            android:textSize="@dimen/nameNote_size">
+    <TextView
+        android:id="@+id/nameNotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:text="Название заметки"
+        android:textSize="@dimen/nameNote_size">
 
-        </TextView>
+    </TextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/back">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/remove">
+
+    </com.google.android.material.button.MaterialButton>
 </LinearLayout>
